@@ -15,10 +15,14 @@ public class Inscription {
         this.Id_Classe = -4;
     }
 
-    public Inscription(String _Date_Inscription, int _Id_Inscription, int _Id_Classe){
+    public Inscription(String _Date_Inscription, int _Id_Inscription, int _id_classe){
         this.Date_Inscription = _Date_Inscription;
         this.Id_Inscription = _Id_Inscription;
-        this.Id_Classe = _Id_Classe;
+        this.Id_Classe = _id_classe;
+    }
+
+    public void addtoClasse(int numerodeclasse){
+
     }
 
 }

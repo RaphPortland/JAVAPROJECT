@@ -3,9 +3,9 @@ package modele;
 
 public class Personne {
 
-    private int id;
-    private String nom;
-    private String prenom;
+    protected int id;
+    protected String nom;
+    protected String prenom;
 
 
     public Personne(){
