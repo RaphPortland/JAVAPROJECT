@@ -24,16 +24,10 @@ public class Classe {
         this.tab_Eleve = new ArrayList<>();
 
     }
-    public void addcoursauneClasse(Enseignement x){
-        this.Tab_Cours.add(x);
-    }
-    public void addeleveauneclasse(Eleve e){
-        this.tab_Eleve.add(e);
-    }
 
     @Override
     public String toString(){
-        String results = " Id de la classe : "+ this.id_Classe  + "\n Liste Eleve : \n";
+        String results = "  Id de la classe : "+ this.id_Classe + "\n  Nombre de cours : " + this.Tab_Cours.size() +"\n  Liste Eleve : ";
 
         if(this.tab_Eleve.size()>0){
 
@@ -41,12 +35,37 @@ public class Classe {
                 results =  results + temp.toString() + " ";
             }
         } else {
+            results = results + " Classe vide\n     ";
+        }
+        results = results + "\n     ";
+        if(this.Tab_Cours.size()>0){
 
-
-            results = results + "Classe vide";
+            for (Enseignement temp : this.Tab_Cours) {
+                results =  results + ""+temp.toString() + "\n     ";
+            }
+        } else {
+            results = results + "Pas de cours";
         }
 
         return results;
+    }
+
+   /* public static Classe getDataClassefromSQLdatabase(){
+
+
+        return this;
+    }
+*/
+
+    public void addcoursauneClasse(Enseignement x){
+        this.Tab_Cours.add(x);
+    }
+    public void addeleveauneclasse(Eleve e){
+        this.tab_Eleve.add(e);
+    }
+
+    public int getId(){
+        return this.id_Classe;
     }
 
 }

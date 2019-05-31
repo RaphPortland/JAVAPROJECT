@@ -19,4 +19,11 @@ public class Enseignant extends Personne{
         // Coder l'inscription a un enseignement, remplissage de tab_enseignement
         System.out.println("Inscription a un enseignement a faire");
     }
+
+    @Override
+    public String toString(){
+        String result = " Nom : " + this.nom +  ", Prenom : " + this.prenom + "";
+        return result;
+    }
+
 }

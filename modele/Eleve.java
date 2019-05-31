@@ -23,7 +23,7 @@ public class Eleve extends Personne {
 
     @Override
     public String toString(){
-        String result = " Nom : " + this.nom +  ", Prenom : " + this.prenom + "\n";
+        String result = " Nom : " + this.nom +  ", Prenom : " + this.prenom + "  ";
         return result;
     }
 

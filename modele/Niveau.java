@@ -15,4 +15,11 @@ public class Niveau {
         this.id_Niveau = _id_Niveau;
         this.nom_Niveau = _nom_Niveau;
     }
+
+
+    @Override
+    public String toString(){
+        return "Nom du niveau : " + this.nom_Niveau + " Id du niveau : " + this.id_Niveau +"\n";
+    }
+
 }

@@ -26,6 +26,17 @@ public class Enseignement {
         this.LesClasses = new ArrayList<>();
     }
 
+    @Override
+    public String toString(){
+        String results = "";
+
+        results = results + "Info du cours : " + this.LaDiscipline.toString() + "";
+        results = results + " Professeur : " + this.LeProf.toString() + "";
+        results = results + " Id Enseignement : " + this.id_Enseignement + "";
+
+        return results;
+    }
+
     public void addClassetoArrayListEnseignementinEnseignement(Classe x){
         this.LesClasses.add(x);
     }
