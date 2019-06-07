@@ -8,26 +8,29 @@ public class Classe {
     private int id_Classe;
     private ArrayList<Enseignement> Tab_Cours;
     private ArrayList<Eleve> tab_Eleve;
+    private AnneeScolaire annee;
 
     public Classe(){
         this.LeNiveau = new Niveau();
         this.id_Classe = -2;
         this.Tab_Cours = new ArrayList<>();
         this.tab_Eleve = new ArrayList<>();
+        this.annee = new AnneeScolaire();
 
     }
 
-    public Classe(Niveau a, int _id_Classe){
+    public Classe(Niveau a, int _id_Classe, AnneeScolaire ann){
         this.LeNiveau = a;
         this.id_Classe = _id_Classe;
         this.Tab_Cours = new ArrayList<>();
         this.tab_Eleve = new ArrayList<>();
+        this.annee = ann;
 
     }
 
     @Override
     public String toString(){
-        String results = "  Id de la classe : "+ this.id_Classe + "\n  Nombre de cours : " + this.Tab_Cours.size() +"\n  Liste Eleve : ";
+        String results = "  Id de la classe : "+ this.id_Classe + "\nAnnee Scolaire : "+ this.annee.toString() + " Nombre de cours : " + this.Tab_Cours.size() +"\n  Liste Eleve : ";
 
         if(this.tab_Eleve.size()>0){
 

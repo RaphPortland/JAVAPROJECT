@@ -45,7 +45,6 @@ public class Ecole {
 
 
                String sql = "SELECT * FROM `Classe` WHERE `#IdE`=" + Integer.parseInt(myRs.getString("Id"))+";";
-
                 ResultSet myRsClasse = update(sql);
                 try{
 
@@ -62,8 +61,25 @@ public class Ecole {
                                 Niveau Niveau_ = new Niveau(Integer.parseInt(myRsNiveau.getString("Id")), myRsNiveau.getString("Nom"));
                                 System.out.println(Niveau_.toString());
 
-                                Classe newclasse = new Classe(Niveau_,Integer.parseInt(myRsClasse.getString("Id") ));
-                                tab_classe.add(newclasse);
+                                ResultSet myRsAnnee = update("select * FROM `AnneeScolaire` WHERE Id = " + myRsClasse.getString("#IdAS"));
+
+                                try{
+
+                                    while (myRsAnnee.next()) {
+
+                                        AnneeScolaire an = new AnneeScolaire(Integer.parseInt(myRsAnnee.getString("Id")), myRsAnnee.getString("Annee"));
+                                        System.out.println(Niveau_.toString());
+
+                                        Classe newclasse = new Classe(Niveau_,Integer.parseInt(myRsClasse.getString("Id") ), an);
+                                        tab_classe.add(newclasse);
+                                    }
+                                }
+                                catch (Exception exc) {
+                                    exc.printStackTrace();
+                                }
+
+
+
                             }
                         }
                         catch (Exception exc) {
