@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le :  ven. 31 mai 2019 à 16:16
+-- Généré le :  ven. 07 juin 2019 à 15:28
 -- Version du serveur :  5.7.25
 -- Version de PHP :  7.3.1
 
@@ -21,15 +21,16 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `AnneeScolaire` (
-  `Id` int(11) NOT NULL
+  `Id` int(11) NOT NULL,
+  `Annee` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `AnneeScolaire`
 --
 
-INSERT INTO `AnneeScolaire` (`Id`) VALUES
-(1);
+INSERT INTO `AnneeScolaire` (`Id`, `Annee`) VALUES
+(1, '2015/2016');
 
 -- --------------------------------------------------------
 
@@ -133,8 +134,8 @@ CREATE TABLE `Enseignement` (
 --
 
 INSERT INTO `Enseignement` (`Id`, `#IdC`, `#IdP`, `#IdD`) VALUES
-(1, 1, 1, 1),
-(2, 1, 2, 2);
+(1, 1, 61, 1),
+(2, 1, 62, 2);
 
 -- --------------------------------------------------------
 
@@ -198,6 +199,7 @@ CREATE TABLE `Personne` (
   `Id` int(11) NOT NULL,
   `Nom` varchar(45) NOT NULL,
   `Prenom` varchar(45) NOT NULL,
+  `Sexe` char(45) NOT NULL,
   `Type` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -205,12 +207,72 @@ CREATE TABLE `Personne` (
 -- Déchargement des données de la table `Personne`
 --
 
-INSERT INTO `Personne` (`Id`, `Nom`, `Prenom`, `Type`) VALUES
-(1, 'Houari', 'Meshkour', 1),
-(2, 'Crambes', 'Christine', 1),
-(3, 'Raphael', 'Partouche', 2),
-(4, 'Tabard ', 'Guillaume', 2),
-(5, 'Cauquelin', 'Louis', 2);
+INSERT INTO `Personne` (`Id`, `Nom`, `Prenom`, `Sexe`, `Type`) VALUES
+(1, 'Dupond', 'Sophie', 'f', 2),
+(2, 'Olsen', 'Lea', 'f', 2),
+(3, 'Mcronald', 'Donald', 'h', 2),
+(4, 'Dunlap', 'Leo', 'h', 2),
+(5, 'Harrington', 'Henri', 'h', 2),
+(6, 'Chichi', 'Jacques', 'h', 2),
+(7, 'Ellison', 'Lacey', 'f', 2),
+(8, 'Trevino', 'Hugo', 'h', 2),
+(9, 'Duncan', 'Morgane', 'f', 1),
+(10, 'Burt', 'Guillaume', 'f', 1),
+(11, 'Oconnor', 'Iris', 'f', 1),
+(12, 'Lisa', 'Mona', 'f', 1),
+(13, 'Super', 'Daniel', 'h', 1),
+(14, 'Love', 'Rose', 'f', 1),
+(15, 'Barker', 'Jamal', 'h', 1),
+(16, 'Velasquez', 'Maria', 'f', 1),
+(17, 'Courel', 'Paul', 'h', 1),
+(18, 'Pate', 'Yoan', 'h', 1),
+(19, 'Assin', 'Marc', 'h', 1),
+(20, 'Nemar', 'Jean', 'h', 1),
+(21, 'Wheeler', 'Bianca', 'f', 1),
+(22, 'Dale', 'Shoshana', 'f', 1),
+(23, 'Caulfield', 'Maxine', 'f', 1),
+(24, 'Grand', 'Jeanne', 'f', 1),
+(25, 'Bonneau', 'Jean', 'h', 1),
+(26, 'Pena', 'Martha', 'f', 1),
+(27, 'Potter', 'Harry', 'h', 1),
+(28, 'Granger', 'Hermione', 'f', 1),
+(29, 'Grint', 'Ron', 'h', 1),
+(30, 'Who', 'Doctor', 'h', 1),
+(31, 'Quinn', 'Harley', 'f', 1),
+(32, 'Baggins', 'Bilbo', 'h', 1),
+(33, 'Krueger', 'Fredy', 'h', 1),
+(34, 'Stark', 'Ned', 'h', 1),
+(35, 'Stark', 'Arya', 'h', 1),
+(36, 'Soral', 'Louison', 'f', 1),
+(37, 'Tuisson', 'Jerome', 'h', 1),
+(38, 'Noice', 'Gerard', 'h', 1),
+(39, 'Dupond', 'Colette', 'f', 1),
+(40, 'Amidala', 'Padme', 'f', 1),
+(41, 'Durand', 'Marie', 'f', 1),
+(42, 'Garcia', 'Marina', 'f', 1),
+(43, 'Edison', 'Thomas', 'h', 1),
+(44, 'Watt', 'James', 'h', 1),
+(45, 'Descartes', 'Rene', 'h', 1),
+(46, 'Darwin', 'Charles', 'h', 1),
+(47, 'Currie', 'Marie', 'f', 1),
+(48, 'Newton', 'Isaac', 'h', 1),
+(49, 'Legrand', 'Morgane', 'f', 1),
+(50, 'Tesla', 'Nikola', 'h', 1),
+(51, 'Muller', 'Stephanie', 'f', 1),
+(52, 'Coco', 'Chanel', 'f', 1),
+(53, 'Lefebres', 'Daniel', 'h', 1),
+(54, 'Fleur', 'Rosalie', 'f', 1),
+(55, 'Marveille', 'Veronique', 'f', 1),
+(56, 'Dupuis', 'Monique', 'f', 1),
+(57, 'Patricia', 'Belanger', 'f', 1),
+(58, 'Patel', 'Charlotte', 'f', 1),
+(59, 'Mercier', 'Aimee', 'f', 1),
+(60, 'Cloutier', 'Julie', 'f', 1),
+(61, 'Houari', 'Meshkour', 'h', 1),
+(62, 'Crambes', 'Christine', 'f', 1),
+(63, 'Raphael', 'Partouche', 'h', 2),
+(64, 'Tabard ', 'Guillaume', 'h', 2),
+(65, 'Cauquelin', 'Louis', 'h', 2);
 
 -- --------------------------------------------------------
 
@@ -384,7 +446,7 @@ ALTER TABLE `Niveau`
 -- AUTO_INCREMENT pour la table `Personne`
 --
 ALTER TABLE `Personne`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT pour la table `Trimestre`
