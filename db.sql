@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le :  ven. 07 juin 2019 à 15:28
+-- Généré le :  ven. 07 juin 2019 à 16:25
 -- Version du serveur :  5.7.25
 -- Version de PHP :  7.3.1
 
@@ -167,9 +167,14 @@ CREATE TABLE `Inscription` (
 --
 
 INSERT INTO `Inscription` (`Id`, `#IdC`, `#IdP`) VALUES
-(1, 1, 5),
-(2, 1, 3),
-(3, 1, 4);
+(1, 1, 1),
+(2, 1, 2),
+(3, 1, 3),
+(4, 1, 4),
+(5, 1, 5),
+(6, 1, 6),
+(7, 1, 7),
+(8, 1, 8);
 
 -- --------------------------------------------------------
 
@@ -434,7 +439,7 @@ ALTER TABLE `Evaluation`
 -- AUTO_INCREMENT pour la table `Inscription`
 --
 ALTER TABLE `Inscription`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `Niveau`
