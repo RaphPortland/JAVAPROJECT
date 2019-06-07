@@ -6,6 +6,7 @@
 package vue;
 
 import java.awt.Color;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,8 +19,11 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
+        loadTable();
     }
 
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -80,8 +84,6 @@ public class Home extends javax.swing.JFrame {
         tableText = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        mainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         itemMenu.setBackground(new java.awt.Color(243, 249, 255));
 
@@ -421,10 +423,8 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(reportBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(infoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        mainPanel.add(itemMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, -1));
 
         rightPanel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -597,14 +597,28 @@ public class Home extends javax.swing.JFrame {
         );
 
         topPanel.setBackground(new java.awt.Color(241, 241, 241));
-        topPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         anneeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        topPanel.add(anneeBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, -3, -1, 60));
 
         anneeText.setFont(new java.awt.Font("Noteworthy", 0, 16)); // NOI18N
         anneeText.setText("Année scolaire :");
-        topPanel.add(anneeText, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, -3, -1, 50));
+
+        javax.swing.GroupLayout topPanelLayout = new javax.swing.GroupLayout(topPanel);
+        topPanel.setLayout(topPanelLayout);
+        topPanelLayout.setHorizontalGroup(
+            topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(topPanelLayout.createSequentialGroup()
+                .addGap(600, 600, 600)
+                .addComponent(anneeText))
+            .addGroup(topPanelLayout.createSequentialGroup()
+                .addGap(690, 690, 690)
+                .addComponent(anneeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        topPanelLayout.setVerticalGroup(
+            topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(anneeText, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(anneeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -634,7 +648,7 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(ligne, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(rightPanelLayout.createSequentialGroup()
                         .addComponent(welcomeText)
-                        .addContainerGap(409, Short.MAX_VALUE))
+                        .addContainerGap())
                     .addGroup(rightPanelLayout.createSequentialGroup()
                         .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tableText)
@@ -653,9 +667,8 @@ public class Home extends javax.swing.JFrame {
         rightPanelLayout.setVerticalGroup(
             rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rightPanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(topPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addComponent(welcomeText)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ligne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -673,7 +686,22 @@ public class Home extends javax.swing.JFrame {
                 .addGap(30, 30, 30))
         );
 
-        mainPanel.add(rightPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, -7, 800, 550));
+        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+        mainPanel.setLayout(mainPanelLayout);
+        mainPanelLayout.setHorizontalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGap(215, 215, 215)
+                .addComponent(rightPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(itemMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        mainPanelLayout.setVerticalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addComponent(rightPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(itemMenu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -761,7 +789,11 @@ public class Home extends javax.swing.JFrame {
     private void addGradeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addGradeMouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_addGradeMouseExited
-
+    public void loadTable(){
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.addRow(new Object[]{"1", "Cauquelin", "Louis", "TD6", "Supprimer"});
+    }
+    
     /**
      * @param args the command line arguments
      */
