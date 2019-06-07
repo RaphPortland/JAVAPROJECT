@@ -33,6 +33,7 @@ public class Classe {
         String results = "  Id de la classe : "+ this.id_Classe + "\nAnnee Scolaire : "+ this.annee.toString() + " Nombre de cours : " + this.Tab_Cours.size() +"\n  Liste Eleve : ";
 
         if(this.tab_Eleve.size()>0){
+            results = results + " Taille Classe : "+this.tab_Eleve.size() + "\n     ";
 
             for (Eleve temp : this.tab_Eleve) {
                 results =  results + temp.toString() + " ";
