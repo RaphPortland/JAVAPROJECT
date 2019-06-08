@@ -10,8 +10,8 @@ public class Enseignant extends Personne{
     public Enseignant(){
         this.tab_enseignement = new ArrayList<Enseignement>();
     }
-    public Enseignant(int id_, String _nom, String _prenom){
-        super(id_,_nom,_prenom);
+    public Enseignant(int id_, String _nom, String _prenom, String sexe_){
+        super(id_,_nom,_prenom,sexe_);
         this.tab_enseignement = new ArrayList<Enseignement>();
     }
 

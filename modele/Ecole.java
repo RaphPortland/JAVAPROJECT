@@ -9,18 +9,57 @@ public class Ecole {
 
 
     private ArrayList<Classe> tab_classe;
+    private ArrayList<Eleve> listeEleve;
+    private ArrayList<Enseignant> listeEnseignant;
+
 
     public Ecole(){
         this.tab_classe = new ArrayList<>();
+        this.listeEleve = new ArrayList<>();
+        this.listeEnseignant = new ArrayList<>();
     }
-
     public void addClasse(Classe A) {
         this.tab_classe.add(A);
     }
-
     public ArrayList<Classe> get_tabClass(){
         return this.tab_classe;
     }
+    public int getnbreleve(){return this.listeEleve.size();}
+    public int getnbrenseignant(){return this.listeEnseignant.size();}
+    public int getnbrdeclasse(){return this.tab_classe.size();}
+
+    public void inscriptiondunnouvelleeleve(String Nom, String Prenom, String Sexe, int Iddelaclasse){
+        updateDELETEINSERTUPDATE("INSERT INTO `Personne`(`Nom`, `Prenom`, `Sexe`, `Type`) VALUES ('"+ Nom +"','"+ Prenom +"','"+ Sexe +"',"+ 2 +")");
+
+        ResultSet myRsidnewperso = update("select Id FROM `Personne` WHERE Nom = '"+ Nom +"' AND Prenom = '" + Prenom +"'");
+        int id_neweleve=-3;
+        try{
+            while (myRsidnewperso.next()){
+                id_neweleve = Integer.parseInt(myRsidnewperso.getString("Id"));
+
+            }
+
+        }
+        catch (Exception exc) {
+            exc.printStackTrace();
+        }
+        updateDELETEINSERTUPDATE("INSERT INTO `Inscription`(`#IdC`, `#IdP`) VALUES ("+ Iddelaclasse + ","+ id_neweleve+")");
+
+    }
+
+    public void inscriptiondunnouveauprof(String Nom, String Prenom, String Sexe){
+        updateDELETEINSERTUPDATE("INSERT INTO `Personne`(`Nom`, `Prenom`, `Sexe`, `Type`) VALUES ('"+ Nom +"','"+ Prenom +"','"+ Sexe +"',"+ 1 +")");
+    }
+
+    public void creationnouvelleclasse(int id_annee_scolaire, String Nomdelaclasse, int id_niveau){
+        updateDELETEINSERTUPDATE("INSERT INTO `Classe`(`#IdAS`, `Nom`, `#IdE`, `#IdN`) VALUES ("+ id_annee_scolaire + ",'"+ Nomdelaclasse +"',1,"+ id_niveau+")");
+    }
+
+    public void supresseleve(){
+        updateDELETEINSERTUPDATE("DELETE FROM `Personne` WHERE Nom ='Burt'");
+    }
+
+
 
     @Override
     public String toString(){
@@ -38,6 +77,27 @@ public class Ecole {
 
 
     public void getDataECOLEfromSQLdatabase(){
+
+        ResultSet myRsperso = update("select * FROM `Personne` ");
+
+        try{
+
+            while (myRsperso.next()) {
+
+                if(Integer.parseInt(myRsperso.getString("Type")) == 2){
+                    Eleve w_a = new Eleve(Integer.parseInt(myRsperso.getString("Id")), myRsperso.getString("Nom"),myRsperso.getString("Prenom"),myRsperso.getString("Sexe"));
+                    listeEleve.add(w_a);
+                } else {
+                    Enseignant w_a = new Enseignant(Integer.parseInt(myRsperso.getString("Id")), myRsperso.getString("Nom"),myRsperso.getString("Prenom"),myRsperso.getString("Sexe"));
+                    listeEnseignant.add(w_a);
+                }
+
+            }
+        }
+        catch (Exception exc) {
+            exc.printStackTrace();
+        }
+
         ResultSet myRs= update("select * from Ecole");
         try{
             while (myRs.next()) {
@@ -111,7 +171,7 @@ public class Ecole {
                                 try{
 
                                     while (myRsProf.next()) {
-                                        leProf_ = new Enseignant(Integer.parseInt(myRsProf.getString("Id")), myRsProf.getString("Nom"),myRsProf.getString("Nom"));
+                                        leProf_ = new Enseignant(Integer.parseInt(myRsProf.getString("Id")), myRsProf.getString("Nom"),myRsProf.getString("Nom"),myRsProf.getString("Sexe"));
 
 
                                     }
@@ -162,7 +222,7 @@ public class Ecole {
 
                     while (myRsInscript.next()) {
 
-                        ELEVE____ = new Eleve(Integer.parseInt(myRsEleve.getString("Id")),myRsEleve.getString("Nom"),myRsEleve.getString("Prenom"),"1990/12/12",Integer.parseInt(myRsInscript.getString("Id")),Integer.parseInt(myRsInscript.getString("#IdC")));
+                        ELEVE____ = new Eleve(Integer.parseInt(myRsEleve.getString("Id")),myRsEleve.getString("Nom"),myRsEleve.getString("Prenom"),"1990/12/12",Integer.parseInt(myRsInscript.getString("Id")),Integer.parseInt(myRsInscript.getString("#IdC")),myRsEleve.getString("Sexe"));
                       //  Inscription Inscri_ = new Inscription("1990/12/12",Integer.parseInt(myRsInscript.getString("Id")),Integer.parseInt(myRsInscript.getString("#IdC")));
                         int x_ = 0;
                         for(Classe a : this.tab_classe){
@@ -205,6 +265,25 @@ public class Ecole {
         catch (Exception exc) {
             exc.printStackTrace();
             return null;
+        }
+
+    }
+
+    public static void updateDELETEINSERTUPDATE(String sqlrequest){
+        try {
+            //connection to database
+            Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:8889/ProjetInfoIng3?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
+
+            //create statement
+            Statement myStmt = myConn.createStatement();
+
+            //execute sql query
+            myStmt.executeUpdate(sqlrequest);
+
+
+        }
+        catch (Exception exc) {
+            exc.printStackTrace();
         }
 
     }

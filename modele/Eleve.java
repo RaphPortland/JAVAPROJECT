@@ -9,10 +9,16 @@ public class Eleve extends Personne {
         this.AsTonInscrit= null;
     }
 
-    public Eleve(int id_, String _nom, String _prenom, String _Date_Inscription, int _Id_Inscription, int _id_classe){
+
+    public Eleve(int id_, String _nom, String _prenom, String sexe_){
+        super(id_,_nom,_prenom,sexe_);
+    }
+
+    public Eleve(int id_, String _nom, String _prenom, String _Date_Inscription,int _Id_Inscription, int _id_classe, String Sexe_){
         this.id = id_;
         this.prenom = _nom;
         this.nom = _prenom;
+        this.sexe = Sexe_;
         this.id_Classe = _id_classe;
         this.AsTonInscrit = new Inscription(_Date_Inscription,_Id_Inscription,_id_classe);
     }
