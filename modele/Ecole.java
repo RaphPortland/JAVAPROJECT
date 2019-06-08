@@ -42,16 +42,37 @@ public class Ecole {
     public ArrayList<Discipline> get_tabDiscipline(){
         return this.listeDiscipline;
     }
+    public ArrayList<Eleve> get_listeeleve(){
+        return this.listeEleve;
+    }
+    public ArrayList<Enseignant> get_listeenseignant(){
+        return this.listeEnseignant;
+    }
 
 
-    public int getnbreleve(){return this.listeEleve.size();}
+    public int getnbreleve(){
+
+        int i = 0;
+        for(Classe a : this.tab_classe){
+            i = i + a.getElevedelaclasse().size();
+        }
+        return i;
+    }
     public int getnbrenseignant(){return this.listeEnseignant.size();}
     public int getnbrdeclasse(){return this.tab_classe.size();}
     public int getnbrdhomme(){
-        int i=0;
+        /*int i=0;
         for (Eleve a : this.listeEleve){
             if(Objects.equals(a.getsexe(), "h")){
                 i=i+1;
+            }
+        }*/
+        int i = 0;
+        for(Classe a : this.tab_classe){
+            for (Eleve h : a.getElevedelaclasse()){
+                if(Objects.equals(h.getsexe(), "h")){
+                    i=i+1;
+                }
             }
         }
 

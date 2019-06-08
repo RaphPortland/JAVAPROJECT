@@ -127,7 +127,7 @@ public class Home extends javax.swing.JFrame {
         indexBtn.setBackground(new java.awt.Color(243, 249, 255));
         indexBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                indexBtnMouseClicked(evt);
+                indexBtnMouseClicked(evt,ece);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 indexBtnMouseEntered(evt);
@@ -730,8 +730,8 @@ public class Home extends javax.swing.JFrame {
         indexBtn.setBackground(new Color(243,249,255));
     }//GEN-LAST:event_indexBtnMouseExited
 
-    private void indexBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_indexBtnMouseClicked
-         new Index().setVisible(true);
+    private void indexBtnMouseClicked(java.awt.event.MouseEvent evt,Ecole ece) {//GEN-FIRST:event_indexBtnMouseClicked
+         new Index(ece).setVisible(true);
          this.dispose();
     }//GEN-LAST:event_indexBtnMouseClicked
 

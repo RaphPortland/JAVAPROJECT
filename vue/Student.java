@@ -4,8 +4,11 @@
  * and open the template in the editor.
  */
 package vue;
+import modele.Classe;
 import modele.Ecole;
+import modele.Eleve;
 
+import javax.swing.table.DefaultTableModel;
 import java.awt.Color;
 
 /**
@@ -17,8 +20,9 @@ public class Student extends javax.swing.JFrame {
     /**
      * Creates new form Student
      */
-    public Student() {
-        initComponents();
+    public Student(Ecole ece) {
+        initComponents(ece);
+        loadTable(ece);
     }
 
     /**
@@ -28,7 +32,7 @@ public class Student extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents(Ecole ece) {
 
         mainPanel = new javax.swing.JPanel();
         itemMenu = new javax.swing.JPanel();
@@ -125,7 +129,7 @@ public class Student extends javax.swing.JFrame {
         indexBtn.setBackground(new java.awt.Color(243, 249, 255));
         indexBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                indexBtnMouseClicked(evt);
+                indexBtnMouseClicked(evt,ece);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 indexBtnMouseEntered(evt);
@@ -721,8 +725,8 @@ public class Student extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void indexBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_indexBtnMouseClicked
-        new Index().setVisible(true);
+    private void indexBtnMouseClicked(java.awt.event.MouseEvent evt,Ecole ece) {//GEN-FIRST:event_indexBtnMouseClicked
+        new Index(ece).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_indexBtnMouseClicked
 
@@ -794,7 +798,12 @@ public class Student extends javax.swing.JFrame {
     private void addGradeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addGradeMouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_addGradeMouseExited
+    public void loadTable(Ecole ece){
 
+        System.out.println(ece.toString());
+
+
+    }
     /**
      * @param args the command line arguments
      */

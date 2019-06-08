@@ -5,8 +5,12 @@
  */
 package vue;
 
+import modele.Classe;
 import modele.Ecole;
+import modele.Eleve;
+import modele.Enseignant;
 
+import javax.swing.table.DefaultTableModel;
 import java.awt.Color;
 
 /**
@@ -18,8 +22,9 @@ public class Index extends javax.swing.JFrame {
     /**
      * Creates new form index
      */
-    public Index() {
-        initComponents();
+    public Index(Ecole ece) {
+        initComponents(ece);
+        loadTable(ece);
     }
 
     /**
@@ -29,7 +34,7 @@ public class Index extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents(Ecole ece) {
 
         mainPanel = new javax.swing.JPanel();
         itemMenu = new javax.swing.JPanel();
@@ -103,7 +108,7 @@ public class Index extends javax.swing.JFrame {
         indexBtn.setBackground(new java.awt.Color(243, 249, 255));
         indexBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                indexBtnMouseClicked(evt);
+                indexBtnMouseClicked(evt,ece);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 indexBtnMouseEntered(evt);
@@ -411,7 +416,7 @@ public class Index extends javax.swing.JFrame {
 
         topPanel.setBackground(new java.awt.Color(241, 241, 241));
 
-        anneeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        anneeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Annee 2015/2016" }));
 
         anneeText.setFont(new java.awt.Font("Noteworthy", 0, 16)); // NOI18N
         anneeText.setText("Année scolaire :");
@@ -507,8 +512,8 @@ public class Index extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void indexBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_indexBtnMouseClicked
-        new Index().setVisible(true);
+    private void indexBtnMouseClicked(java.awt.event.MouseEvent evt,Ecole ece) {//GEN-FIRST:event_indexBtnMouseClicked
+        new Index(ece).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_indexBtnMouseClicked
 
@@ -581,6 +586,23 @@ public class Index extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_addGradeMouseExited
 
+    public void loadTable(Ecole ece){
+
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        String m="";
+
+        for (Eleve x_a :  ece.get_listeeleve()){
+            m="Eleve";
+            model.addRow(new Object[]{x_a.getid(), x_a.getnom(), x_a.getprenom(), m, "Supprimer"});
+
+        }
+        for (Enseignant x_a :  ece.get_listeenseignant()){
+            m="Prof";
+            model.addRow(new Object[]{x_a.getid(), x_a.getnom(), x_a.getprenom(), m, "Supprimer"});
+
+        }
+
+    }
     /**
      * @param args the command line arguments
      */

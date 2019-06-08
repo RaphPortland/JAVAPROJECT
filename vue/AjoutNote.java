@@ -105,8 +105,8 @@ public class AjoutNote extends javax.swing.JFrame {
 
         indexBtn.setBackground(new java.awt.Color(243, 249, 255));
         indexBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                indexBtnMouseClicked(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt,Ecole ece) {
+                indexBtnMouseClicked(evt,ece);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 indexBtnMouseEntered(evt);
@@ -547,8 +547,8 @@ public class AjoutNote extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void indexBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_indexBtnMouseClicked
-        new Index().setVisible(true);
+    private void indexBtnMouseClicked(java.awt.event.MouseEvent evt,Ecole ece) {//GEN-FIRST:event_indexBtnMouseClicked
+        new Index(ece).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_indexBtnMouseClicked
 

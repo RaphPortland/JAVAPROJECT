@@ -33,11 +33,11 @@ public class Eleve extends Personne {
         return result;
     }
 
-    public String getsexe(){return this.sexe;}
+    /*public String getsexe(){return this.sexe;}
 
     public String getnom(){return this.nom;}
     public String getprenom(){return this.prenom;}
     public int getid(){return this.id;}
 
-
+*/
 }

@@ -4,8 +4,11 @@
  * and open the template in the editor.
  */
 package vue;
+import modele.Classe;
 import modele.Ecole;
+import modele.Eleve;
 
+import javax.swing.table.DefaultTableModel;
 import java.awt.Color;
 
 /**
@@ -106,7 +109,7 @@ public class Classes extends javax.swing.JFrame {
         indexBtn.setBackground(new java.awt.Color(243, 249, 255));
         indexBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                indexBtnMouseClicked(evt);
+                indexBtnMouseClicked(evt,ece);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 indexBtnMouseEntered(evt);
@@ -571,8 +574,8 @@ public class Classes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ajouterEleveBtnMouseClicked
 
-    private void indexBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_indexBtnMouseClicked
-        new Index().setVisible(true);
+    private void indexBtnMouseClicked(java.awt.event.MouseEvent evt,Ecole ece) {//GEN-FIRST:event_indexBtnMouseClicked
+        new Index(ece).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_indexBtnMouseClicked
 
@@ -647,6 +650,26 @@ public class Classes extends javax.swing.JFrame {
 
 
     void loadTable(Ecole ece){
+
+        String[] arr = new String[ece.get_tabClass().size()]; // 10 is the length of the array.
+        int i = 0;
+        for(Classe a : ece.get_tabClass()){
+            arr[i] = a.getNom();
+            i = i+1;
+        }
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(arr));
+
+        //String value = jComboBox1.getSelectedItem().toString();
+
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        for (Classe x_a :  ece.get_tabClass()){
+                for(Eleve y_a : x_a.getElevedelaclasse()){
+                    model.addRow(new Object[]{y_a.getid(), y_a.getnom(), y_a.getprenom(), x_a.getNom(), "Supprimer"});
+
+                }
+
+
+        }
 
     }
     /**

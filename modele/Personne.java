@@ -21,4 +21,9 @@ public class Personne {
         this.nom = _prenom;
         this.sexe = sexe_;
     }
+    public String getsexe(){return this.sexe;}
+
+    public String getnom(){return this.nom;}
+    public String getprenom(){return this.prenom;}
+    public int getid(){return this.id;}
 }
