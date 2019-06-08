@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package vue;
+import modele.Ecole;
+
 import java.awt.Color;
 
 /**
@@ -15,8 +17,9 @@ public class Classes extends javax.swing.JFrame {
     /**
      * Creates new form Classes
      */
-    public Classes() {
-        initComponents();
+    public Classes(Ecole ece) {
+        initComponents(ece);
+        loadTable(ece);
     }
 
     /**
@@ -26,7 +29,7 @@ public class Classes extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents(Ecole ece) {
 
         mainPanel = new javax.swing.JPanel();
         itemMenu = new javax.swing.JPanel();
@@ -148,8 +151,8 @@ public class Classes extends javax.swing.JFrame {
 
         classroomBtn.setBackground(new java.awt.Color(243, 249, 255));
         classroomBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                classroomBtnMouseClicked(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt,Ecole ece) {
+                classroomBtnMouseClicked(evt, ece);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 classroomBtnMouseEntered(evt);
@@ -238,8 +241,8 @@ public class Classes extends javax.swing.JFrame {
 
         inscriptionBtn.setBackground(new java.awt.Color(243, 249, 255));
         inscriptionBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                inscriptionBtnMouseClicked(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt, Ecole ece) {
+                inscriptionBtnMouseClicked(evt,ece);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 inscriptionBtnMouseEntered(evt);
@@ -458,7 +461,7 @@ public class Classes extends javax.swing.JFrame {
         tableText.setForeground(new java.awt.Color(86, 98, 112));
         tableText.setText("Élèves de la classe :");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "hihi", "Item 2", "Item 3", "Item 4" }));
 
         ajouterClasseBtn.setBackground(new java.awt.Color(136, 171, 117));
         ajouterClasseBtn.setFont(new java.awt.Font("Noteworthy", 0, 13)); // NOI18N
@@ -581,8 +584,8 @@ public class Classes extends javax.swing.JFrame {
         indexBtn.setBackground(new Color(243,249,255));
     }//GEN-LAST:event_indexBtnMouseExited
 
-    private void classroomBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_classroomBtnMouseClicked
-        new Classes().setVisible(true);
+    private void classroomBtnMouseClicked(java.awt.event.MouseEvent evt, Ecole ece) {//GEN-FIRST:event_classroomBtnMouseClicked
+        new Classes(ece).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_classroomBtnMouseClicked
 
@@ -606,8 +609,8 @@ public class Classes extends javax.swing.JFrame {
         reportBtn.setBackground(new Color(243,249,255));
     }//GEN-LAST:event_reportBtnMouseExited
 
-    private void inscriptionBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inscriptionBtnMouseClicked
-        new Inscription().setVisible(true);
+    private void inscriptionBtnMouseClicked(java.awt.event.MouseEvent evt, Ecole ece) {//GEN-FIRST:event_inscriptionBtnMouseClicked
+        new Inscription(ece).setVisible(true);
     }//GEN-LAST:event_inscriptionBtnMouseClicked
 
     private void inscriptionBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inscriptionBtnMouseEntered
@@ -642,6 +645,10 @@ public class Classes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_addGradeMouseExited
 
+
+    void loadTable(Ecole ece){
+
+    }
     /**
      * @param args the command line arguments
      */

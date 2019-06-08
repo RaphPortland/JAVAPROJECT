@@ -29,10 +29,15 @@ public class Eleve extends Personne {
 
     @Override
     public String toString(){
-        String result = " Nom : " + this.nom +  ", Prenom : " + this.prenom + "  ";
+        String result = " Nom : " + this.nom +  ", Prenom : " + this.prenom +", Sexe : " + this.sexe +  "  ";
         return result;
     }
 
+    public String getsexe(){return this.sexe;}
+
+    public String getnom(){return this.nom;}
+    public String getprenom(){return this.prenom;}
+    public int getid(){return this.id;}
 
 
 }

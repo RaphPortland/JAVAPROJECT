@@ -32,11 +32,12 @@ public class Main {
 
         Ecole ece = new Ecole();
         ece.getDataECOLEfromSQLdatabase();
-        System.out.println(ece.toString());
+
+
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Home().setVisible(true);
+                new Home(ece).setVisible(true);
             }
 
         });

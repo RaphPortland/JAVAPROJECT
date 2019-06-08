@@ -21,5 +21,5 @@ public class Niveau {
     public String toString(){
         return "Nom du niveau : " + this.nom_Niveau + " Id du niveau : " + this.id_Niveau +"\n";
     }
-
+    public String getNom(){return this.nom_Niveau;}
 }

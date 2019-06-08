@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package vue;
+import modele.Ecole;
+
 import java.awt.Color;
 
 /**
@@ -168,8 +170,8 @@ public class Student extends javax.swing.JFrame {
 
         classroomBtn.setBackground(new java.awt.Color(243, 249, 255));
         classroomBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                classroomBtnMouseClicked(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt,Ecole ece) {
+                classroomBtnMouseClicked(evt,ece);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 classroomBtnMouseEntered(evt);
@@ -258,8 +260,8 @@ public class Student extends javax.swing.JFrame {
 
         inscriptionBtn.setBackground(new java.awt.Color(243, 249, 255));
         inscriptionBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                inscriptionBtnMouseClicked(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt,Ecole ece) {
+                inscriptionBtnMouseClicked(evt,ece);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 inscriptionBtnMouseEntered(evt);
@@ -732,8 +734,8 @@ public class Student extends javax.swing.JFrame {
         indexBtn.setBackground(new Color(243,249,255));
     }//GEN-LAST:event_indexBtnMouseExited
 
-    private void classroomBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_classroomBtnMouseClicked
-        new Classes().setVisible(true);
+    private void classroomBtnMouseClicked(java.awt.event.MouseEvent evt,Ecole ece) {//GEN-FIRST:event_classroomBtnMouseClicked
+        new Classes(ece).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_classroomBtnMouseClicked
 
@@ -757,8 +759,8 @@ public class Student extends javax.swing.JFrame {
         reportBtn.setBackground(new Color(243,249,255));
     }//GEN-LAST:event_reportBtnMouseExited
 
-    private void inscriptionBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inscriptionBtnMouseClicked
-        new Inscription().setVisible(true);
+    private void inscriptionBtnMouseClicked(java.awt.event.MouseEvent evt, Ecole ece) {//GEN-FIRST:event_inscriptionBtnMouseClicked
+        new Inscription(ece).setVisible(true);
     }//GEN-LAST:event_inscriptionBtnMouseClicked
 
     private void inscriptionBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inscriptionBtnMouseEntered

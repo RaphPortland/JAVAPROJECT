@@ -2,7 +2,7 @@ package modele;
 
 import java.util.ArrayList;
 import java.sql.*;
-
+import java.util.Objects;
 
 
 public class Ecole {
@@ -11,12 +11,21 @@ public class Ecole {
     private ArrayList<Classe> tab_classe;
     private ArrayList<Eleve> listeEleve;
     private ArrayList<Enseignant> listeEnseignant;
+    private ArrayList<Niveau> listeNiveau;
+    private ArrayList<AnneeScolaire> listeannescolaire;
+    private ArrayList<Discipline> listeDiscipline;
+
+
 
 
     public Ecole(){
         this.tab_classe = new ArrayList<>();
         this.listeEleve = new ArrayList<>();
         this.listeEnseignant = new ArrayList<>();
+        this.listeNiveau = new ArrayList<>();
+        this.listeannescolaire = new ArrayList<>();
+        this.listeDiscipline = new ArrayList<>();
+
     }
     public void addClasse(Classe A) {
         this.tab_classe.add(A);
@@ -24,9 +33,30 @@ public class Ecole {
     public ArrayList<Classe> get_tabClass(){
         return this.tab_classe;
     }
+    public ArrayList<Niveau> get_tabNiveau(){
+        return this.listeNiveau;
+    }
+    public ArrayList<AnneeScolaire> get_tabanneescolaire(){
+        return this.listeannescolaire;
+    }
+    public ArrayList<Discipline> get_tabDiscipline(){
+        return this.listeDiscipline;
+    }
+
+
     public int getnbreleve(){return this.listeEleve.size();}
     public int getnbrenseignant(){return this.listeEnseignant.size();}
     public int getnbrdeclasse(){return this.tab_classe.size();}
+    public int getnbrdhomme(){
+        int i=0;
+        for (Eleve a : this.listeEleve){
+            if(Objects.equals(a.getsexe(), "h")){
+                i=i+1;
+            }
+        }
+
+        return i;
+    }
 
     public void inscriptiondunnouvelleeleve(String Nom, String Prenom, String Sexe, int Iddelaclasse){
         updateDELETEINSERTUPDATE("INSERT INTO `Personne`(`Nom`, `Prenom`, `Sexe`, `Type`) VALUES ('"+ Nom +"','"+ Prenom +"','"+ Sexe +"',"+ 2 +")");
@@ -98,6 +128,43 @@ public class Ecole {
             exc.printStackTrace();
         }
 
+        ResultSet myRsniveau = update("select * FROM `Niveau` ");
+        try{
+
+            while (myRsniveau.next()) {
+                Niveau a = new Niveau(Integer.parseInt(myRsniveau.getString("Id")), myRsniveau.getString("Nom"));
+                this.listeNiveau.add(a);
+            }
+        }
+        catch (Exception exc) {
+            exc.printStackTrace();
+        }
+
+        ResultSet myRsAS = update("select * FROM `AnneeScolaire` ");
+        try{
+            while (myRsAS.next()) {
+                AnneeScolaire a = new AnneeScolaire(Integer.parseInt(myRsAS.getString("Id")),myRsAS.getString("Annee"));
+                this.listeannescolaire.add(a);
+            }
+        }
+        catch (Exception exc) {
+            exc.printStackTrace();
+        }
+
+
+        ResultSet myRsDiscipline1 = update("select * FROM `Discipline` ");
+        try{
+
+            while (myRsDiscipline1.next()) {
+                Discipline a =new Discipline(Integer.parseInt(myRsDiscipline1.getString("Id")),myRsDiscipline1.getString("Nom"));
+                this.listeDiscipline.add(a);
+            }
+        }
+        catch (Exception exc) {
+            exc.printStackTrace();
+        }
+
+
         ResultSet myRs= update("select * from Ecole");
         try{
             while (myRs.next()) {
@@ -130,7 +197,7 @@ public class Ecole {
                                         AnneeScolaire an = new AnneeScolaire(Integer.parseInt(myRsAnnee.getString("Id")), myRsAnnee.getString("Annee"));
                                         System.out.println(Niveau_.toString());
 
-                                        Classe newclasse = new Classe(Niveau_,Integer.parseInt(myRsClasse.getString("Id") ), an);
+                                        Classe newclasse = new Classe(Niveau_,Integer.parseInt(myRsClasse.getString("Id") ), an,myRsClasse.getString("Nom"));
                                         tab_classe.add(newclasse);
                                     }
                                 }

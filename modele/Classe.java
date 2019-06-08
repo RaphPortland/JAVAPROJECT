@@ -9,6 +9,8 @@ public class Classe {
     private ArrayList<Enseignement> Tab_Cours;
     private ArrayList<Eleve> tab_Eleve;
     private AnneeScolaire annee;
+    private String Nom;
+
 
     public Classe(){
         this.LeNiveau = new Niveau();
@@ -16,15 +18,17 @@ public class Classe {
         this.Tab_Cours = new ArrayList<>();
         this.tab_Eleve = new ArrayList<>();
         this.annee = new AnneeScolaire();
+        this.Nom = "";
 
     }
 
-    public Classe(Niveau a, int _id_Classe, AnneeScolaire ann){
+    public Classe(Niveau a, int _id_Classe, AnneeScolaire ann,String nomdelaclasse){
         this.LeNiveau = a;
         this.id_Classe = _id_Classe;
         this.Tab_Cours = new ArrayList<>();
         this.tab_Eleve = new ArrayList<>();
         this.annee = ann;
+        this.Nom = nomdelaclasse;
 
     }
 
@@ -71,5 +75,11 @@ public class Classe {
     public int getId(){
         return this.id_Classe;
     }
+    public String getNom(){
+        return this.Nom;
+    }
+
+
+    public ArrayList<Eleve> getElevedelaclasse(){return this.tab_Eleve;}
 
 }

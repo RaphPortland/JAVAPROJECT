@@ -20,4 +20,6 @@ public class Discipline {
         String res = "Discipline : " + this.nom_Discipline + " ID de la discipline : " + this.id_Discipline + "";
         return res;
     }
+
+    public String getNom(){return this.nom_Discipline;}
 }

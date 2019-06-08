@@ -5,6 +5,10 @@
  */
 package vue;
 
+import modele.Classe;
+import modele.Ecole;
+import modele.Eleve;
+
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,9 +21,10 @@ public class Home extends javax.swing.JFrame {
     /**
      * Creates new form home
      */
-    public Home() {
-        initComponents();
-        loadTable();
+    public Home(Ecole ece) {
+        
+        initComponents(ece);
+        loadTable(ece);
     }
 
     
@@ -31,7 +36,7 @@ public class Home extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents(Ecole ece) {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         mainPanel = new javax.swing.JPanel();
@@ -168,7 +173,7 @@ public class Home extends javax.swing.JFrame {
         classroomBtn.setBackground(new java.awt.Color(243, 249, 255));
         classroomBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                classroomBtnMouseClicked(evt);
+                classroomBtnMouseClicked(evt,ece);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 classroomBtnMouseEntered(evt);
@@ -258,7 +263,7 @@ public class Home extends javax.swing.JFrame {
         inscriptionBtn.setBackground(new java.awt.Color(243, 249, 255));
         inscriptionBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                inscriptionBtnMouseClicked(evt);
+                inscriptionBtnMouseClicked(evt,ece);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 inscriptionBtnMouseEntered(evt);
@@ -770,12 +775,12 @@ public class Home extends javax.swing.JFrame {
         infoBtn.setBackground(new Color(243,249,255));
     }//GEN-LAST:event_infoBtnMouseExited
 
-    private void inscriptionBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inscriptionBtnMouseClicked
-         new Inscription().setVisible(true);
+    private void inscriptionBtnMouseClicked(java.awt.event.MouseEvent evt, Ecole ece) {//GEN-FIRST:event_inscriptionBtnMouseClicked
+         new Inscription(ece).setVisible(true);
          this.dispose();    }//GEN-LAST:event_inscriptionBtnMouseClicked
 
-    private void classroomBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_classroomBtnMouseClicked
-         new Classes().setVisible(true);
+    private void classroomBtnMouseClicked(java.awt.event.MouseEvent evt, Ecole ece) {//GEN-FIRST:event_classroomBtnMouseClicked
+         new Classes(ece).setVisible(true);
          this.dispose();     }//GEN-LAST:event_classroomBtnMouseClicked
 
     private void addGradeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addGradeMouseClicked
@@ -789,10 +794,36 @@ public class Home extends javax.swing.JFrame {
     private void addGradeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addGradeMouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_addGradeMouseExited
-    public void loadTable(){
+    public void loadTable(Ecole ece){
+
+
+        System.out.println(ece.toString());
+
+
         DefaultTableModel model = (DefaultTableModel) table.getModel();
-        model.addRow(new Object[]{"1", "Cauquelin", "Louis", "TD6", "Supprimer"});
-        boyCountNumber.setText("90");
+
+        for (Classe x_a :  ece.get_tabClass()){
+            for(Eleve y_a : x_a.getElevedelaclasse()){
+                model.addRow(new Object[]{y_a.getid(), y_a.getnom(), y_a.getprenom(), x_a.getNom(), "Supprimer"});
+
+            }
+        }
+
+
+        String value = "";
+
+        value = ece.getnbrdhomme() + "";
+        boyCountNumber.setText(value);
+
+        value = "" + ece.getnbreleve() + "";
+        studentCountNumber.setText(value);
+
+        int nbrfille = ece.getnbreleve()-ece.getnbrdhomme();
+        value = "" + nbrfille + "";
+        girlCountNumber.setText(value);
+
+        value = ""+ ece.getnbrdeclasse() + "";
+        classroomCountNumber.setText(value);
 
 
     }
@@ -826,12 +857,12 @@ public class Home extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        //java.awt.EventQueue.invokeLater(new Runnable() {
+          /*  public void run() {
                 new Home().setVisible(true);
-            }
+            } */
             
-        });
+      //  });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

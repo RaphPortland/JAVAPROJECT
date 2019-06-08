@@ -21,5 +21,9 @@ public class AnneeScolaire {
         return this.nomdelannee;
     }
 
+    public String getNom(){
+        return this.nomdelannee;
+    }
+
 
 }

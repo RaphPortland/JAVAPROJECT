@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 package vue;
+import modele.*;
+
 import java.awt.Color;
+import java.util.ArrayList;
 
 
 /**
@@ -16,8 +19,10 @@ public class Inscription extends javax.swing.JFrame {
     /**
      * Creates new form Inscription
      */
-    public Inscription() {
-        initComponents();
+    public Inscription(Ecole ece) {
+        initComponents(ece);
+        loadTable(ece);
+
     }
 
     /**
@@ -27,7 +32,7 @@ public class Inscription extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents(Ecole ece) {
 
         mainPanel = new javax.swing.JPanel();
         itemMenu = new javax.swing.JPanel();
@@ -172,8 +177,8 @@ public class Inscription extends javax.swing.JFrame {
 
         classroomBtn.setBackground(new java.awt.Color(243, 249, 255));
         classroomBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                classroomBtnMouseClicked(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt, Ecole ece) {
+                classroomBtnMouseClicked(evt,ece);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 classroomBtnMouseEntered(evt);
@@ -263,7 +268,7 @@ public class Inscription extends javax.swing.JFrame {
         inscriptionBtn.setBackground(new java.awt.Color(243, 249, 255));
         inscriptionBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                inscriptionBtnMouseClicked(evt);
+                inscriptionBtnMouseClicked(evt,ece);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 inscriptionBtnMouseEntered(evt);
@@ -479,9 +484,9 @@ public class Inscription extends javax.swing.JFrame {
         sexeText.setForeground(new java.awt.Color(86, 98, 112));
         sexeText.setText("Sexe (h/f) : ");
 
-        enseignementText.setFont(new java.awt.Font("Noteworthy", 1, 18)); // NOI18N
-        enseignementText.setForeground(new java.awt.Color(86, 98, 112));
-        enseignementText.setText("Enseignement :");
+       // enseignementText.setFont(new java.awt.Font("Noteworthy", 1, 18)); // NOI18N
+       // enseignementText.setForeground(new java.awt.Color(86, 98, 112));
+       // enseignementText.setText("Enseignement :");
 
         niveauText.setFont(new java.awt.Font("Noteworthy", 1, 18)); // NOI18N
         niveauText.setForeground(new java.awt.Color(86, 98, 112));
@@ -498,8 +503,6 @@ public class Inscription extends javax.swing.JFrame {
         classeChoix.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         anneeScolaireChoix.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        enseignementChoix.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         sexeChoice.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "h", "f" }));
 
@@ -740,8 +743,8 @@ public class Inscription extends javax.swing.JFrame {
         indexBtn.setBackground(new Color(243,249,255));
     }//GEN-LAST:event_indexBtnMouseExited
 
-    private void classroomBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_classroomBtnMouseClicked
-        new Classes().setVisible(true);
+    private void classroomBtnMouseClicked(java.awt.event.MouseEvent evt, Ecole ece) {//GEN-FIRST:event_classroomBtnMouseClicked
+        new Classes(ece).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_classroomBtnMouseClicked
 
@@ -765,8 +768,10 @@ public class Inscription extends javax.swing.JFrame {
         reportBtn.setBackground(new Color(243,249,255));
     }//GEN-LAST:event_reportBtnMouseExited
 
-    private void inscriptionBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inscriptionBtnMouseClicked
-        new Inscription().setVisible(true);
+    private void inscriptionBtnMouseClicked(java.awt.event.MouseEvent evt, Ecole ece) {//GEN-FIRST:event_inscriptionBtnMouseClicked
+        new Inscription(ece).setVisible(true);
+        this.dispose();
+
     }//GEN-LAST:event_inscriptionBtnMouseClicked
 
     private void inscriptionBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inscriptionBtnMouseEntered
@@ -800,7 +805,45 @@ public class Inscription extends javax.swing.JFrame {
     private void addGradeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addGradeMouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_addGradeMouseExited
+    public void loadTable(Ecole ece){
 
+        String[] arr = new String[ece.getnbrdeclasse()]; // 10 is the length of the array.
+        int i = 0;
+        for(Classe a : ece.get_tabClass()){
+            arr[i] = a.getNom();
+            i = i+1;
+        }
+        classeChoix.setModel(new javax.swing.DefaultComboBoxModel<>(arr));
+
+        arr = new String[ece.get_tabNiveau().size()]; // 10 is the length of the array.
+        i = 0;
+        for(Niveau a : ece.get_tabNiveau()){
+            arr[i] = a.getNom();
+            i = i+1;
+        }
+        niveauChoix.setModel(new javax.swing.DefaultComboBoxModel<>(arr));
+
+        arr = new String[ece.get_tabanneescolaire().size()]; // 10 is the length of the array.
+        i = 0;
+        for(AnneeScolaire a : ece.get_tabanneescolaire()){
+            arr[i] = a.getNom();
+            i = i+1;
+        }
+        anneeScolaireChoix.setModel(new javax.swing.DefaultComboBoxModel<>(arr));
+
+        arr = new String[ece.get_tabDiscipline().size()]; // 10 is the length of the array.
+        i = 0;
+        for(Discipline a : ece.get_tabDiscipline()){
+            arr[i] = a.getNom();
+            i = i+1;
+        }
+        enseignementChoix1.setModel(new javax.swing.DefaultComboBoxModel<>(arr));
+
+
+        //anneeScolaireChoix.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        //enseignementChoix.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+    }
     /**
      * @param args the command line arguments
      */
