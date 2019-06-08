@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le :  ven. 07 juin 2019 à 16:25
+-- Généré le :  sam. 08 juin 2019 à 19:32
 -- Version du serveur :  5.7.25
 -- Version de PHP :  7.3.1
 
@@ -64,7 +64,8 @@ CREATE TABLE `Classe` (
 --
 
 INSERT INTO `Classe` (`Id`, `#IdAS`, `Nom`, `#IdE`, `#IdN`) VALUES
-(1, 1, 'TD6', 1, 1);
+(1, 1, 'TD6', 1, 1),
+(3, 1, 'TD7', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -169,12 +170,23 @@ CREATE TABLE `Inscription` (
 INSERT INTO `Inscription` (`Id`, `#IdC`, `#IdP`) VALUES
 (1, 1, 1),
 (2, 1, 2),
-(3, 1, 3),
-(4, 1, 4),
-(5, 1, 5),
+(3, 3, 3),
+(4, 3, 4),
+(5, 3, 5),
 (6, 1, 6),
 (7, 1, 7),
-(8, 1, 8);
+(8, 1, 8),
+(12, 1, 15),
+(13, 1, 40),
+(14, 1, 39),
+(15, 3, 38),
+(16, 3, 20),
+(17, 3, 11),
+(18, 3, 12),
+(19, 3, 12),
+(20, 3, 13),
+(22, 1, 15),
+(23, 1, 16);
 
 -- --------------------------------------------------------
 
@@ -221,21 +233,19 @@ INSERT INTO `Personne` (`Id`, `Nom`, `Prenom`, `Sexe`, `Type`) VALUES
 (6, 'Chichi', 'Jacques', 'h', 2),
 (7, 'Ellison', 'Lacey', 'f', 2),
 (8, 'Trevino', 'Hugo', 'h', 2),
-(9, 'Duncan', 'Morgane', 'f', 1),
-(10, 'Burt', 'Guillaume', 'f', 1),
-(11, 'Oconnor', 'Iris', 'f', 1),
-(12, 'Lisa', 'Mona', 'f', 1),
-(13, 'Super', 'Daniel', 'h', 1),
-(14, 'Love', 'Rose', 'f', 1),
-(15, 'Barker', 'Jamal', 'h', 1),
-(16, 'Velasquez', 'Maria', 'f', 1),
-(17, 'Courel', 'Paul', 'h', 1),
-(18, 'Pate', 'Yoan', 'h', 1),
-(19, 'Assin', 'Marc', 'h', 1),
-(20, 'Nemar', 'Jean', 'h', 1),
-(21, 'Wheeler', 'Bianca', 'f', 1),
-(22, 'Dale', 'Shoshana', 'f', 1),
-(23, 'Caulfield', 'Maxine', 'f', 1),
+(9, 'Duncan', 'Morgane', 'f', 2),
+(11, 'Oconnor', 'Iris', 'f', 2),
+(12, 'Lisa', 'Mona', 'f', 2),
+(13, 'Super', 'Daniel', 'h', 2),
+(15, 'Barker', 'Jamal', 'h', 2),
+(16, 'Velasquez', 'Maria', 'f', 2),
+(17, 'Courel', 'Paul', 'h', 2),
+(18, 'Pate', 'Yoan', 'h', 2),
+(19, 'Assin', 'Marc', 'h', 2),
+(20, 'Nemar', 'Jean', 'h', 2),
+(21, 'Wheeler', 'Bianca', 'f', 2),
+(22, 'Dale', 'Shoshana', 'f', 2),
+(23, 'Caulfield', 'Maxine', 'f', 2),
 (24, 'Grand', 'Jeanne', 'f', 1),
 (25, 'Bonneau', 'Jean', 'h', 1),
 (26, 'Pena', 'Martha', 'f', 1),
@@ -277,7 +287,11 @@ INSERT INTO `Personne` (`Id`, `Nom`, `Prenom`, `Sexe`, `Type`) VALUES
 (62, 'Crambes', 'Christine', 'f', 1),
 (63, 'Raphael', 'Partouche', 'h', 2),
 (64, 'Tabard ', 'Guillaume', 'h', 2),
-(65, 'Cauquelin', 'Louis', 'h', 2);
+(65, 'Cauquelin', 'Louis', 'h', 2),
+(67, 'ROBERTOOOOOO', 'CALABRAS', 'f', 1),
+(70, 'HIHI', 'HAHA', 'f', 1),
+(71, 'HIHI', 'HAHA', 'f', 1),
+(72, 'HIHI', 'HAHA', 'f', 1);
 
 -- --------------------------------------------------------
 
@@ -403,7 +417,7 @@ ALTER TABLE `Bulletin`
 -- AUTO_INCREMENT pour la table `Classe`
 --
 ALTER TABLE `Classe`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `DetailBulletin`
@@ -439,7 +453,7 @@ ALTER TABLE `Evaluation`
 -- AUTO_INCREMENT pour la table `Inscription`
 --
 ALTER TABLE `Inscription`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT pour la table `Niveau`
@@ -451,7 +465,7 @@ ALTER TABLE `Niveau`
 -- AUTO_INCREMENT pour la table `Personne`
 --
 ALTER TABLE `Personne`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT pour la table `Trimestre`
